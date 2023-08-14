@@ -146,10 +146,12 @@
             self.currentImage = gal.find('.gal-item').eq(self.options.startIndex).first();
 
             gal.slick(options);
-
-            gal.height(gal.width());
+            var galinner = self.el.find("#imageholder");
+            gal.height(gal.width() * 2 / 3);
+            galinner.height(gal.width() * 2 / 3);
             EventBroker.subscribe("page.resized", function (msg, viewport) {
-                gal.height(gal.width());
+                gal.height(gal.width() * 2 / 3);
+                galinner.height(gal.width() * 2 / 3);
                 self.initNav();
             });
 
